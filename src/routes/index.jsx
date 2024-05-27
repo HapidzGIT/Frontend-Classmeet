@@ -69,7 +69,7 @@ export default function RoutesIndex() {
           </Suspense>
         }
       />
-      {/* Route untuk admin */}
+      {/* role untuk admin */}
       <Route path="/AdminDashboard" element={<AdminDashboard />} />
       <Route path="/DashboardPages" element={<DashboardPages />} />
       <Route path="/DataKelas" element={<DataKelas />} />
