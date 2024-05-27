@@ -18,7 +18,7 @@ import { BiSolidFileExport } from "react-icons/bi";
 const SidebarUser = () => {
   const [open, setOpen] = useState(true);
   let navigate = useNavigate();
-  document.title = 'AdminDashboard';
+  document.title = 'UserDashboard';
 
   const handleLogout = async () => {
     try {

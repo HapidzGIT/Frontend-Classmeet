@@ -19,12 +19,21 @@ const ExportData = () => {
     console.log(response.data.data)
   }
 
-  // const exportToExcel = () => {
-  //   const xls = json2xls(data)
-  //   const fileName = "data-lomba.xlsx"
-  //   fs.writeFileSync(fileName, xls, 'binary')
-  //   window.open(fileName)
-  // }
+  const ReportData =
+<tbody className="font-semibold">
+  {data.map((user, index) => (
+    <tr key={index}>
+      <td className="text-[20px] border text-center">{user.nama_lomba}</td>
+      <td className="text-[20px] border text-center">{user.tempat}</td>
+      <td className="text-[20px] border text-center">{user.kelas}</td>
+      <td className="text-[20px] border text-center">{user.tanggal}</td>
+      <td className="text-[20px] border text-center">{user.waktu}</td>
+      <td className="text-[20px] border text-center">{user.keterangan}</td>
+    </tr>
+  ))}
+</tbody>
+  
+
   return (
     <div className="flex">
     <SidebarUser/>
@@ -53,20 +62,7 @@ const ExportData = () => {
               <th className="text-[23px] text-center">Keterangan</th>
             </tr>
           </thead>
-          <tbody className="font-semibold">
-            {data.map((user) => (
-              <tr key={user.id}>
-              
-                <td className="text-[20px] border text-center">{user.nama_lomba}</td>
-                <td className="text-[20px] border text-center">{user.tempat}</td>
-                <td className="text-[20px] border text-center">{user.kelas}</td>
-                <td className="text-[20px] border text-center">{user.tanggal}</td>
-                <td className="text-[20px] border text-center">{user.waktu}</td>
-                <td className="text-[20px] border text-center">{user.keterangan}</td>
-               
-              </tr>
-            ))}
-          </tbody>
+         {ReportData}
         </table>
       </div>
     </div>

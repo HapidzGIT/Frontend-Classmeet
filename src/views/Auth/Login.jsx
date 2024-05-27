@@ -134,7 +134,7 @@ const Login = () => {
               <p className='text-red-500'>{formik.errors.email}</p>
               <div className="flex items-center text-justify">
                 <span className="md:w-6">
-                  <FontAwesomeIcon icon={faEnvelope} />
+                  <FontAwesomeIcon className='sm:mr-3' icon={faEnvelope} />
                 </span>
                 <input onChange={handleForm} id="email" type="text" name="email" className="form-control w-full border p-2 rounded-lg" placeholder="Masukkan Alamat Email" />
               </div>
@@ -146,7 +146,7 @@ const Login = () => {
               <p className='text-red-500'>{formik.errors.password}</p>
               <div className="flex items-center text-justify">
                 <span className="md:w-6">
-                  <FontAwesomeIcon icon={faLock} />
+                  <FontAwesomeIcon className='sm:mr-3' icon={faLock} />
                 </span>
                 <input onChange={handleForm} id="password" type="password" name="password" className="form-control w-full border p-2 rounded-lg" autoComplete="off" placeholder="Masukkan Kata Sandi Anda" />
               </div>

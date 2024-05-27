@@ -17,6 +17,7 @@ const PendaftaranLomba = () => {
         setDataLomba(response.data.data);
         setTotalPages(response.data.last_page);
         setLoading(false);
+        console.log(response.data.data)
       } catch (error) {
         console.error(error);
       }
@@ -28,11 +29,13 @@ const PendaftaranLomba = () => {
     setCurrentPage(pageNumber);
   };
 
+  
+
   return (
     <div className='flex'>
       <SidebarUser/>
         <div className="mt-20">
-          <div className="flex justify-center items-center gap-5 w-[1120px] ml-10 overflow-x-auto">
+          <div className="flex justify-center items-center gap-5 w-[980px] ml-10 overflow-x-auto">
             {loading ? (
               <>
                 {[...Array(3)].map((_, index) => (
@@ -46,7 +49,7 @@ const PendaftaranLomba = () => {
               </>
             ) : (
               dataLomba.map((lomba) => (
-                <div key={lomba.id} className="card w-[500px] bg-base-200 shadow-xl h-[400px]">
+                <div key={lomba.id} className="card w-[400px] bg-base-200 shadow-xl h-[400px]">
                   <figure className="px-2 pt-10">
                     <img src={`http://127.0.0.1:8000/storage/post_img/${lomba.image}`} alt="Lomba-image" className="rounded-xl" />
                   </figure>

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const MendaftarLomba = ({ updateRiwayatDaftar }) => {
   const { id } = useParams(); // Mengambil ID Lomba dari URL
@@ -15,6 +16,8 @@ const MendaftarLomba = ({ updateRiwayatDaftar }) => {
     buat_lomba_id: id, // Menggunakan ID Lomba dari URL
   });
 
+  const navigate = useNavigate()
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -23,7 +26,11 @@ const MendaftarLomba = ({ updateRiwayatDaftar }) => {
     e.preventDefault();
     try {
       const response = await axios.post(`http://127.0.0.1:8000/api/lomba/create`, formData);
-      alert('Data berhasil disimpan');
+     toast.success("Berhasil Mendaftar", {
+      position: "top-center",
+      duration : 3000
+     })
+     navigate('/PendaftarLomba')
       console.log(response.data);
       setFormData({
         nama_peserta: '',

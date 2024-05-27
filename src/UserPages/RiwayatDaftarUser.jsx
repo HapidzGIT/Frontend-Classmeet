@@ -1,33 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SidebarUser from '../components/SidebarUser';
+import { FaBasketballBall } from "react-icons/fa";
 
 const RiwayatDaftarUser = () => {
-  const [riwayatDaftar, setRiwayatDaftar] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('http://127.0.0.1:8000/api/riwayat-daftar');
-        setRiwayatDaftar(response.data);
-      } catch (error) {
-        console.error('Error fetching riwayat daftar:', error);
-      }
-    };
+  const [loading, isloading] = useState(false);
 
-    fetchData();
-  }, []);
-
+  
   return (
-    <div className="flex">
+    <div className="flex flex-wrap w-full min-h-screen">
       <SidebarUser />
-      <div className="ml-8">
-        <h1 className="text-2xl font-bold mb-4">Riwayat Daftar User</h1>
-        <ul>
-          {riwayatDaftar.map((riwayat) => (
-            <li key={riwayat.id}>{riwayat.nama_peserta} - {riwayat.nama_lomba}</li>
-          ))}
-        </ul>
+      <div className="ml-5 sm:block">
+        <div className="container pt-16 px-16">
+          <h1 className="text-2xl font-bold">Riwayat Daftar User</h1>
+          <hr />
+      
+            <div className='flex justify-between gap-40 items-center' >
+              <div className='p-1'>
+                <p className='font-semibold pt-10 text-2xl'>Basket</p>
+                <h1>Anda Telah mendaftar di perlombaan </h1>
+              </div>
+              <div className=''>
+                <h1 className='font-semibold pt-10 text-2xl'>Basket</h1>
+                <p className='text-slate-400'>Terdaftar</p>
+              </div>
+            </div>
+        </div>
       </div>
     </div>
   );

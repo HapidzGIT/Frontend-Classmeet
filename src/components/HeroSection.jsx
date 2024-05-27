@@ -1,9 +1,13 @@
 import React from 'react';
 import image from '../assets/images/Hold.png';
 
-const HeroSection = () => {
+const HeroSection = (props) => {
+
+  const id = props.id
+ 
+
   return (
-    <div className="hero min-h-screen bg-base-300">
+    <div id={id} className="hero min-h-screen bg-base-300">
       <div className="hero-content flex-col lg:flex-row-reverse max-w-screen-xl mx-auto">
         <div className="">
           <div className="lg:w-full">

@@ -18,7 +18,6 @@ import SaranUser from '../UserPages/SaranUser.jsx';
 import PostsLomba from '../pages/PostsLomba.jsx';
 import AddUserForm from '../components/AddUserForm.jsx';
 import UserAccount from '../pages/UserAccount.jsx';
-// import ErrorPage from '../pages/404.jsx';
 import PemenangLomba from '../pages/PemenangLomba.jsx';
 import CreatePemenang from '../pages/CreatePemenang.jsx';
 import ExportData from '../UserPages/ExportUser.jsx';
@@ -34,7 +33,7 @@ const Homepages = lazy(() => import('../pages/HomePages.jsx'));
 const UserDashboard = lazy(() => import('../views/Dashboard/UserDashboard.jsx'));
 const AdminDashboard = lazy(() => import('../views/Dashboard/AdminDashboard.jsx'));
 
-export default function   RoutesIndex() {
+export default function RoutesIndex() {
   return (
     <Routes>
       {/* route "/" */}
@@ -56,7 +55,7 @@ export default function   RoutesIndex() {
       />
       <Route
         path="/MendaftarLomba/:id"
-        element={
+      element={
           <Suspense fallback={<Loader />}>
             <AddUserForm />
           </Suspense>

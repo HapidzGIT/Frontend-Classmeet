@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import image from '../assets/images/Logo-Harmoni.png';
 
 const CreateUser = () => {
+  const [loading, setLoading] = useState(false)
   const [user, setUser] = useState({ name: '', email: '', password: '', password_confirmation: '' });
   let navigate = useNavigate();
 
@@ -16,6 +17,7 @@ const CreateUser = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true)
     try {
       const response = await axios.post('http://127.0.0.1:8000/api/register', user);
       console.log(response.data);
@@ -29,6 +31,8 @@ const CreateUser = () => {
     } catch (error) {
       console.error(error);
       alert('Failed to create user. Please try again.');
+    } finally {
+      setLoading(false)
     }
   };
 
@@ -56,9 +60,14 @@ const CreateUser = () => {
               <label className="font-semibold text-[18px] flex-1 mr-2">Confirm Password:</label>
               <input placeholder="Confirm Password" className="bg-green-100 rounded-md px-10 py-2 flex-1 border" type="password" name="password_confirmation" value={user.password_confirmation} onChange={handleChange} required />
             </div>
-            <button type="submit" className="bg-green-300 px-5 py-3 rounded-md text-[18px] font-semibold mt-3">
-              Create User
-            </button>
+            {loading ? <button type="submit" className="bg-green-300 px-5 py-3 rounded-md text-[18px] font-semibold mt-3">
+             Akun Sedang Dibuat....
+           </button>
+            
+             : <button type="submit" className="bg-green-300 px-5 py-3 rounded-md text-[18px] font-semibold mt-3">
+             Create User
+           </button>
+          }
             <Link to="/UserAccount">
               <p className="btn bg-green-400 text-gray-600 cursor-pointer px-2 text-[18px] font-semibold">Kembali Ke Halaman Data user</p>
             </Link>

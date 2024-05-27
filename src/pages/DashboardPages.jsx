@@ -2,10 +2,13 @@ import { useState, useEffect } from 'react';
 import React from 'react';
 import Sidebar from '../components/Sidebar';
 import Cookies from 'js-cookie';
+import { FaUsers } from "react-icons/fa";
+import axios from 'axios';
 
 const DashboardPages = () => {
   const [isAdmin, setIsAdmin] = useState(false);
-
+  const [isusers, setIsUsers] = useState([]);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     // Mendapatkan nilai peran dari cookie
     const roles = Cookies.get('roles');
@@ -13,15 +16,21 @@ const DashboardPages = () => {
     setIsAdmin(roles && JSON.parse(roles).includes('admin')); // Mengubah kondisi di sini
 
     console.log('Role:', roles); // Tambahkan console log di sini
+    FetchDataUsers()
   }, []);
+
+  const FetchDataUsers = async () => {
+    setLoading(true)
+    const response = await axios.get("http://127.0.0.1:8000/api/users")
+    setIsUsers(response.data)
+    console.log(response.data)
+    setLoading(false)
+  }
 
   if (!isAdmin) {
     return <div>Anda tidak memiliki izin untuk mengakses halaman ini.</div>;
   }
 
-  const totalRegistrants = 3;
-  const totalWinners = 1;
-  const TotalPertandingan = 4;
   return (
     <div className="flex bg-green-50">
       <Sidebar />
@@ -36,23 +45,30 @@ const DashboardPages = () => {
                   Disini anda bisa manage mulai dari data lomba, jadwal lomba hingga pendaftaran lomba.
                 </p>
               </div>
-              <div className="flex justify-center gap-10">
-                <div className="mt-8">
-                  <h2 className="text-3xl font-bold">Data Pendaftar</h2>
-                  <div className="bg-white p-4 rounded-lg shadow-md mt-4">
-                    <p className="text-2xl">Total Pendaftar: {totalRegistrants}</p>
+              <div className="container">
+                <div className="flex flex-wrap ">
+                  <div className="w-full grid grid-cols-3 gap-10">
+                  <div className="shadow-lg w-[300px] py-5 px-8 flex">
+                   <div><FaUsers  className='mr-3 mt-5'/></div>
+                 { loading ? <div>Loading...</div>  : <div>
+                      <p className='font-semibold'> Pendaftar</p>
+                      <h1 className='text-lg font-bold'>Jumlah Pendaftar : {isusers.total}</h1>
+                   </div>}
                   </div>
-                </div>
-                <div className="mt-8">
-                  <h2 className="text-3xl font-bold">Data Match</h2>
-                  <div className="bg-white p-4 rounded-lg shadow-md mt-4">
-                    <p className="text-2xl">Total Pertandingan: {TotalPertandingan}</p>
+                  <div className="shadow-lg w-[300px] py-5 px-8 flex">
+                   <div><FaUsers  className='mr-3 mt-5'/></div>
+                   <div>
+                      <p className='font-semibold'> Pemenang</p>
+                      <h1 className='text-lg font-bold'>Jumlah Pendaftar : 5</h1>
+                   </div>
                   </div>
-                </div>
-                <div className="mt-8">
-                  <h2 className="text-3xl font-bold">Data Pemenang</h2>
-                  <div className="bg-white p-4 rounded-lg shadow-md mt-4">
-                    <p className="text-2xl">Total Pemenang: {totalWinners}</p>
+                  <div className="shadow-lg w-[300px] py-5 px-8 flex">
+                   <div><FaUsers  className='mr-3 mt-5'/></div>
+                   <div>
+                      <p className='font-semibold'> Pendaftar</p>
+                      <h1 className='text-lg font-bold'>Jumlah Pendaftar : 5</h1>
+                   </div>
+                  </div>
                   </div>
                 </div>
               </div>
@@ -60,6 +76,7 @@ const DashboardPages = () => {
           </div>
         </div>
       </div>
+      
     </div>
   );
 };

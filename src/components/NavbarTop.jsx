@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const NavbarTop = () => {
+const NavbarTop = (props) => {
+  const id = props.id
+  const id_2 = props.id_2
+  const id_3 = props.id_3
+  const id_4 = props.id_4
+
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -32,20 +37,20 @@ const NavbarTop = () => {
           </div>
           <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
             <li>
-              <div>Home</div>
+              <a href={`#${id}`}>Home</a>
             </li>
             <li>
               <div>
-                <div>About</div>
+                <a  href={`#${id_2}`}>About</a>
               </div>
             </li>
             <li>
               <div>
-                <div>Teams</div>
+                <a href={`#${id_3}`}>Teams</a>
               </div>
             </li>
             <li>
-              <div>Contact</div>
+              <a  href={`#${id_4}`} >Contact</a>
             </li>
           </ul>
         </div>
@@ -55,22 +60,22 @@ const NavbarTop = () => {
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu text-[17px] menu-horizontal px-1">
-          <li>
-            <div>Home</div>
-          </li>
-          <li>
-            <div>
-              <div>About</div>
-            </div>
-          </li>
-          <li>
-            <div>
-              <div>Teams</div>
-            </div>
-          </li>
-          <li>
-            <div>Contact</div>
-          </li>
+        <li>
+              <a href={`#${id}`}>Home</a>
+            </li>
+            <li>
+              <div>
+                <a  href={`#${id_2}`}>About</a>
+              </div>
+            </li>
+            <li>
+              <div>
+                <a href={`#${id_3}`}>Teams</a>
+              </div>
+            </li>
+            <li>
+              <a  href={`#${id_4}`} >Contact</a>
+            </li>
         </ul>
       </div>
       <div className="navbar-end">
@@ -79,6 +84,8 @@ const NavbarTop = () => {
         </Link>
       </div>
     </div>
+
+
   );
 };
 

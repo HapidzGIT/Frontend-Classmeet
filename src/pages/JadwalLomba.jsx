@@ -124,7 +124,6 @@ const JadwalLomba = () => {
         <table className="table w-[1000px] mt-10 ml-5">
           <thead>
             <tr className="font-extrabold">
-              <th className="text-[23px] text-center">ID</th>
               <th className="text-[23px] text-center">Nama Lomba</th>
               <th className="text-[23px] text-center">Tempat</th>
               <th className="text-[23px] text-center">Kelas</th>
@@ -135,9 +134,8 @@ const JadwalLomba = () => {
             </tr>
           </thead>
           <tbody className="font-semibold">
-            {filteredUsers.map((user) => (
-              <tr key={user.id}>
-                <td className="text-[18px] border text-center">{user.id}</td>
+            {filteredUsers.map((user, index) => (
+              <tr key={index}>
                 <td className="text-[18px] border text-center">{user.nama_lomba}</td>
                 <td className="text-[18px] border text-center">{user.tempat}</td>
                 <td className="text-[18px] border text-center">{user.kelas}</td>

@@ -3,10 +3,11 @@ import image from '../assets/images/gweh.jpg';
 import Rehan from '../assets/images/Rehan.jpg';
 import Nabil from '../assets/images/nabil.jpg';
 import Aura from '../assets/images/auraformal.jpg';
-const TeamSection = () => {
+const TeamSection = (props) => {
+  const id = props.id
   return (
     <>
-      <div>
+      <div id={id}>
         <h1 className="text-5xl font-bold text-center mt-20 mb-10">Teams</h1>
         <div className="hero min-h-screen bg-base-300">
           <div className="hero-content text-center sm:block lg:flex">

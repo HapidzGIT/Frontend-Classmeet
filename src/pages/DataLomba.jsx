@@ -20,14 +20,16 @@ const DataLomba = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(`http://127.0.0.1:8000/api/lomba/show?page=${currentPage}`);
-      setUserData(response.data);
+      setUserData(response.data.data);
+      console.log(response)
       setTotalPages(response.data.last_page);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
   };
-    const handlePageChange = (page) => {
-      setCurrentPage(page);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
   };
 
   const handleEdit = (user) => {
@@ -82,15 +84,17 @@ const DataLomba = () => {
     }
   };
 
-  if(userData.length === 0) {
-    return <div className='flex'>
+  if (userData.length === 0) {
+    return (
+      <div className='flex'>
         <Sidebar />
-      <h1 className='text-2xl'>Loading...</h1>
+        <h1 className='text-2xl'>Loading...</h1>
       </div>
+    );
   }
 
   return (
-    <div className="relative overflow-y-auto h-full flex ">
+    <div className="relative overflow-y-auto h-full flex">
       <Sidebar />
       <div className="overflow-y-auto flex-1">
         <h1 className="text-3xl font-bold mb-6 ml-3">Data Lomba - SI-Classmeet</h1>
@@ -108,8 +112,8 @@ const DataLomba = () => {
             </tr>
           </thead>
           <tbody>
-            {userData.map((user) => (
-              <tr key={user.id}>
+            {userData.map((user, index) => (
+              <tr key={index}>
                 <td className="text-[18px] border text-center">{user.id}</td>
                 <td className="text-[18px] border text-center">{user.nama_lomba}</td>
                 <td className="text-[18px] border text-center">{user.nama_peserta}</td>
@@ -118,7 +122,7 @@ const DataLomba = () => {
                 <td className="text-[18px] border text-center">{user.kontak}</td>
                 <td className="text-[18px] border text-center">{user.jumlah_pemain}</td>
                 <td className="text-[18px] border text-center">
-                  <div className="flex">
+                  <div className="flex justify-center">
                     <button className="mr-3 flex mb-2" onClick={() => handleEdit(user)}>
                       <CiEdit className="mr-1" />
                       Edit
@@ -134,12 +138,16 @@ const DataLomba = () => {
           </tbody>
         </table>
         <div className="flex justify-center items-center mt-5">
-            {Array.from({ length: totalPages }, (_, index) => (
-              <button key={index + 1} onClick={() => handlePageChange(index + 1)} className="font-semibold  mx-1 px-5 py-3 rounded-full bg-green-300">
-                {index + 1}
-              </button>
-            ))}
-          </div>
+          {Array.from({ length: totalPages }, (_, index) => (
+            <button
+              key={index + 1}
+              onClick={() => handlePageChange(index + 1)}
+              className={`font-semibold mx-1 px-5 py-3 rounded-full ${currentPage === index + 1 ? 'bg-green-500 text-white' : 'bg-green-300'}`}
+            >
+              {index + 1}
+            </button>
+          ))}
+        </div>
       </div>
       {isModalOpen && <Edit user={editUser} setIsModalOpen={setIsModalOpen} fetchData={fetchData} />}
     </div>

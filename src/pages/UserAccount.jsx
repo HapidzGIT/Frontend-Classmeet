@@ -90,9 +90,9 @@ const UserAccount = () => {
               </tr>
             </thead>
             <tbody>
-              {users.map((user) => (
-                <tr key={user.id}>
-                  <td className="text-[18px] border text-center">{user.id}</td>
+              {users.map((user, index) => (
+                <tr key={index}>
+                  <td className="text-[18px] border text-center">{index +1 }</td>
                   <td className="text-[18px] border text-center">{user.name}</td>
                   <td className="text-[18px] border text-center">{user.email}</td>
                   <td className="text-[18px] border text-center">{user.role}</td>

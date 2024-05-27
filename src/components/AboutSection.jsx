@@ -2,9 +2,10 @@ import React from 'react';
 import image from '../assets/images/smkpk.png';
 import CardComponent from './CardComponent';
 
-const AboutSection = () => {
+const AboutSection = (props) => {
+  const id = props.id
   return (
-    <div className="hero min-h-screen bg-base-200">
+    <div id={id} className="hero min-h-screen bg-base-200">
       <div className="hero-content text-center">
         <div className="p-3">
           <h1 className="text-5xl font-bold">

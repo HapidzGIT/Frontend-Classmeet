@@ -3,9 +3,11 @@ import image from '../assets/images/Logo-Harmoni.png';
 import futsal from '../assets/images/Final da 6ª Copa Paraí de Futsal – 2014.jpg';
 import { Link } from 'react-router-dom';
 
-const CardComponent = () => {
+const CardComponent = (props) => {
+
+  const id = props.id
   return (
-    <div className="text-center">
+    <div id={id} className="text-center">
       <h1 className="text-5xl font-bold text-center py-10">
         Lomba <span>Yang</span>
         <span className="text-green-400 font-semibold text-5xl"> Tersedia</span>
