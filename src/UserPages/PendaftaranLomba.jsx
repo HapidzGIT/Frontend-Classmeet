@@ -29,8 +29,6 @@ const PendaftaranLomba = () => {
     setCurrentPage(pageNumber);
   };
 
-  
-
   return (
     <div className='flex'>
       <SidebarUser/>
@@ -58,7 +56,7 @@ const PendaftaranLomba = () => {
                     <h3 className="text-[18px] font-semibold"> {lomba.nama_lomba}</h3>
                     <p className="font-semibold">{lomba.kontak}</p>
                     <div className="card-actions">
-                      <Link to={`/MendaftarLomba/${lomba.id}`}>
+                      <Link to={`/MendaftarLomba/${lomba.id}`} state={{ nama_lomba: lomba.nama_lomba }}>
                         <button className="btn btn-primary mt-2">Daftar</button>
                       </Link>
                     </div>
@@ -76,7 +74,6 @@ const PendaftaranLomba = () => {
           </div>
         </div>
     </div>
-      
   );
 };
 

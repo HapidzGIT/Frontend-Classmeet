@@ -22,7 +22,7 @@ const CreateUser = () => {
       const response = await axios.post('http://127.0.0.1:8000/api/register', user);
       console.log(response.data);
       Swal.fire({
-        title: 'Sukses!',
+        title: 'Sukses!', 
         text: 'Data peserta berhasil ditambahkan.',
         icon: 'success',
       });

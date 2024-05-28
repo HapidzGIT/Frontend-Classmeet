@@ -83,7 +83,7 @@ const JadwalLomba = () => {
       Swal.fire({
         position: 'top-end',
         icon: 'success',
-        title: 'Your work has been saved',
+        title: 'Jadwal Lomba Telah Tersimpan',
         showConfirmButton: false,
         timer: 1500,
       });

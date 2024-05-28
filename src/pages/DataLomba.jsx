@@ -20,11 +20,12 @@ const DataLomba = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(`http://127.0.0.1:8000/api/lomba/show?page=${currentPage}`);
-      setUserData(response.data.data);
-      console.log(response)
-      setTotalPages(response.data.last_page);
+      setUserData(response.data|| []); // Ensure userData is always an array
+      console.log(response.data)
+      setTotalPages(response.data.last_page || 1);
     } catch (error) {
       console.error('Error fetching data:', error);
+      setUserData([]); // Set userData to an empty array on error
     }
   };
 
@@ -112,29 +113,32 @@ const DataLomba = () => {
             </tr>
           </thead>
           <tbody>
-            {userData.map((user, index) => (
-              <tr key={index}>
-                <td className="text-[18px] border text-center">{user.id}</td>
-                <td className="text-[18px] border text-center">{user.nama_lomba}</td>
-                <td className="text-[18px] border text-center">{user.nama_peserta}</td>
-                <td className="text-[18px] border text-center">{user.nama_kelas}</td>
-                <td className="text-[18px] border text-center">{user.jurusan}</td>
-                <td className="text-[18px] border text-center">{user.kontak}</td>
-                <td className="text-[18px] border text-center">{user.jumlah_pemain}</td>
-                <td className="text-[18px] border text-center">
-                  <div className="flex justify-center">
-                    <button className="mr-3 flex mb-2" onClick={() => handleEdit(user)}>
-                      <CiEdit className="mr-1" />
-                      Edit
-                    </button>
-                    <button onClick={() => handleDelete(user.id)} className="flex">
-                      <MdDelete className="mr-1" />
-                      Delete
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            ))}
+          {userData.map((user, index) => (
+  <tr key={index}>
+    <td className="text-[18px] border text-center">{user.id}</td>
+    <td className="text-[18px] border text-center">{user.nama_lomba}</td>
+    <td className="text-[18px] border text-center">{user.nama_peserta}</td>
+    <td className="text-[18px] border text-center">{user.nama_kelas}</td>
+    <td className="text-[18px] border text-center">{user.jurusan}</td>
+    <td className="text-[18px] border text-center">{user.kontak}</td>
+    <td className="text-[18px] border text-center">
+      {user.jumlah_pemain}
+    </td>
+    <td className="text-[18px] border text-center">
+      <div className="flex justify-center">
+        <button className="mr-3 flex mb-2" onClick={() => handleEdit(user)}>
+          <CiEdit className="mr-1" />
+          Edit
+        </button>
+        <button onClick={() => handleDelete(user.id)} className="flex">
+          <MdDelete className="mr-1" />
+          Delete
+        </button>
+      </div>
+    </td>
+  </tr>
+))}
+
           </tbody>
         </table>
         <div className="flex justify-center items-center mt-5">
