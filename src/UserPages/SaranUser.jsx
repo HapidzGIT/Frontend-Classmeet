@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import SidebarUser from '../components/SidebarUser'; // Hapus salah satu impor ini jika tidak diperlukan
+import toast from 'react-hot-toast';
 
 const Saran = () => {
   const [pesan, setPesan] = useState('');
@@ -47,16 +48,14 @@ const Saran = () => {
         return;
       }
 
-      const response = await axios.post(
-        'http://127.0.0.1:8000/api/chats',
-        { message: pesan },
-        {
-          headers: {
+      const response = await axios.post('http://127.0.0.1:8000/api/chats',{ message: pesan },{ headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,
           },
+          
         }
+
       );
 
       const newChat = {
@@ -74,6 +73,10 @@ const Saran = () => {
       console.error('Error:', error);
       setError('Terjadi kesalahan');
     }
+    toast.success("Berhasil Mengirim Pesan, Jika Tidak Terlihat anda bisa scroll", {
+      position: 'top-center',
+      duration: 3000,
+    })
   };
 
   return (

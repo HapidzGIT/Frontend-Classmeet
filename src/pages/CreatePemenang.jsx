@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import Sidebar from '../components/Sidebar';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import toast from 'react-hot-toast'
 
 const CreatePemenang = () => {
+
   const { id } = useParams(); // Mengambil ID jadwal lomba dari URL
   const [kelasPemenang, setKelasPemenang] = useState({
     jadwal_lomba_id: id,
     kelas_pemenang: '',
   });
 
+  const navigate = useNavigate()
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -17,7 +20,11 @@ const CreatePemenang = () => {
       // Kirim data kelas pemenang ke API
       const response = await axios.post('http://127.0.0.1:8000/api/pemenangsjadwal', kelasPemenang);
       console.log(response.data);
-      alert('Data pemenang berhasil disimpan');
+     toast.success("Berhasil Menambahkan Pemanang", {
+      position : "top-center",
+      duration : 3000
+     })
+     navigate("/JadwalLomba")
     } catch (error) {
       console.error('Error adding winner:', error);
       alert('Terjadi kesalahan saat menyimpan data pemenang');

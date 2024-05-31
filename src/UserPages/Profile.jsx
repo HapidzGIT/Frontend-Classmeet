@@ -24,8 +24,10 @@ const Profile = () => {
       const fetchProfileData = async () => {
         try {
           const response = await axios.get(`http://127.0.0.1:8000/api/profiles/${user.id}`);
-          setProfile(response.data);
+          setProfile(response.data); 
+          console.log(response.data); 
           setFormData({ ...formData, id: response.data.id });
+          
         } catch (error) {
           console.error('Error fetching profile data:', error);
         }

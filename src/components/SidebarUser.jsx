@@ -59,7 +59,7 @@ const SidebarUser = () => {
 
   const Menus = [
     { title: 'Dashboard', icon: <MdOutlineDashboard />, path: '/DashboardUser' },
-    { title: 'Profile', icon: <BsBrowserEdge />, path: '/ProfileDashboard' },
+    // { title: 'Profile', icon: <BsBrowserEdge />, path: '/ProfileDashboard' },
     { title: 'Daftar-Lomba', icon: <FaClipboardList />, path: '/PendaftarLomba' },
     { title: 'Jadwal-Lomba', icon: <MdSchedule />,  spacing: true, path: '/JadwalLombaUser' },
     { title: 'Pemenang', icon: <PiMedalBold />, path: '/PemenangUser' },
