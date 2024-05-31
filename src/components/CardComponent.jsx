@@ -17,7 +17,7 @@ const CardComponent = (props) => {
           <img className="w-full h-56 object-cover" src={image} alt="hehe" />
           <div className="p-4">
             <h3 className="text-lg font-semibold text-gray-800 text-left">Volly</h3>
-            <p className="text-sm text-gray-600 text-left">Volly adalah..</p>
+            <p className="text-sm text-gray-600 text-left">Volly adalah Lomba yang dimainkan oleh 7 orang</p>
           </div>
         </div>
         <div className="bg-white rounded-lg shadow-md overflow-hidden mt-5">
