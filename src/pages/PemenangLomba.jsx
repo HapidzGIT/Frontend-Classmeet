@@ -40,7 +40,7 @@ const Pemenang = () => {
       });
       console.log(response.data);
       toast.success('Email sent successfully!');
-      navigate('/Pemenang'); // Navigate to "/Pemenang" after successful email sending
+      navigate('/Pemenang'); // Navigate to "pages = /Pemenang" after successful email sending
     } catch (error) {
       console.error(error.response.data);
       toast.error('Failed to send email. Please try again.');

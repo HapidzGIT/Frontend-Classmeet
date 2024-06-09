@@ -76,8 +76,8 @@ const RiwayatDaftarUser = () => {
                   </div>
                   <div className='flex flex-col '><h1 className='text-lg py-8 font-semibold'>Anda Telah Mendaftar di</h1>
                   <div className="">
-                    <h1 className="font-semibold text-2xl">{item.nama_peserta}</h1>
                     <p className="text-slate-400">{item.message}</p>
+                    <h1 className="font-semibold text-2xl">anda {item.nama_peserta} Telah Terdaftar</h1>
                   </div>
                   </div>
                 </div>

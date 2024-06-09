@@ -115,7 +115,7 @@ const DataLomba = () => {
           <tbody>
           {userData.map((user, index) => (
   <tr key={index}>
-    <td className="text-[18px] border text-center">{user.id}</td>
+    <td className="text-[18px] border text-center">{index + 1}</td>
     <td className="text-[18px] border text-center">{user.nama_lomba}</td>
     <td className="text-[18px] border text-center">{user.nama_peserta}</td>
     <td className="text-[18px] border text-center">{user.nama_kelas}</td>

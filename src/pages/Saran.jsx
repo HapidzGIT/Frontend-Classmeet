@@ -107,7 +107,7 @@ const Saran = () => {
       console.error('Error deleting user:', error);
     }
   };
-
+  console.log(pesan);
   return (
     <div className="flex">
       <Sidebar />
@@ -117,16 +117,16 @@ const Saran = () => {
             <thead>
               <tr>
                 <th className="px-4 py-2 text-center">No</th>
-                {/* <th className="px-4 py-2 text-center">Pengirim</th> */}
+                <th className="px-4 py-2 text-center">Pengirim</th>
                 <th className="px-4 py-2 text-center">Pesan</th>
                 <th className="px-4 py-2 text-center">Action</th>
               </tr>
             </thead>
             <tbody>
               {chats.map((chat, index) => (
-                <tr key={chat.id}>
+                <tr key={index}>
                   <td className="border px-4 py-2 text-center">{index + 1}</td>
-                  {/* <td className="border px-4 py-2 text-center">{chat.user_name}</td> */}
+                  <td className="border px-4 py-2 text-center">{chat.user_name}</td>
                   <td className="border px-4 py-2 text-center">{chat.message}</td>
                   <td className="border px-4 py-2 text-center">
                     <button onClick={() => handleDelete(chat.id)} className="bg-red-500 text-white px-2 rounded-full">
@@ -151,4 +151,3 @@ const Saran = () => {
 };
 
 export default Saran;
-
